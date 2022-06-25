@@ -1,0 +1,7 @@
+eta1
+eta1 rischio1 <=23 tipo1 >23
+rischio1 END1 =A
+tipo1 rischio2 =sportiva rischio3 =autocarro rischio4 =familiare
+rischio2 END2 =A
+rischio3 END3 =B
+rischio4 END4 =B
