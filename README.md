@@ -16,10 +16,10 @@ Represents each tree node:
 ```c++
 struct treeNode{ // Rappresenta i nodi dell'albero
   Label label;
-	Cond cond;
-
-	treeNode *firstChild;
-	treeNode *nextSibling;
+  Cond cond;
+  
+  treeNode *firstChild;
+  treeNode *nextSibling;
 };
 ```
 
