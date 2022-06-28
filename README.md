@@ -6,8 +6,8 @@ This implementation uses two main data structures:
 Represents the nodes' conditions:
 ```c++
 struct Arc{
-	string cond; // simbolo
-	string var; // variabile
+   string cond; // simbolo
+   string var; // variabile
 };
 ```
 
