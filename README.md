@@ -1,9 +1,9 @@
 # BelandiTree
-My implementation of the decision tree structure made for an university project.
+Questo progetto è una mia implementazione di un albero decisionale (Decision Tree) in C++ per un esercizio all'università.
 
-This implementation uses two main data structures:
+Questa implementazione utilizza 2 struct principali
 ###### Arc
-Represents the nodes' conditions:
+Rappresenta una condizione che porta ad un nodo dell'albero (es. '>23'):
 ```c++
 struct Arc{
    string cond; // simbolo
@@ -12,7 +12,7 @@ struct Arc{
 ```
 
 ###### TreeNode
-Represents each tree node:
+Rappresenta il singolo nodo dell'albero:
 ```c++
 struct treeNode{ // Rappresenta i nodi dell'albero
   Label label;
