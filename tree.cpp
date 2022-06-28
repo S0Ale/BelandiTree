@@ -165,22 +165,40 @@ bool tree::member(const Label l, const Tree& t){
 }
 
 //-----------------------------------------
+// Determina il grado di un nodo
+int tree::degree(const Tree& t){
+	if(isEmpty(t)) return -1;
+
+	int count = 0;
+	Tree aux = t->firstChild;
+	while (isEmpty(aux)){
+		count++;
+		aux = aux->nextSibling;
+	}
+
+	return count;
+}
+
+//-----------------------------------------
 // Effettua una predizione su un singolo nodo dell'albero
 Tree tree::predictOne(const string val, Tree& t){
 	if(arc::format(t->label) == END) return t;
 
-	std::vector<Tree> list;
+	Tree trueList[degree(t)];
 	Tree aux = t->firstChild;
+	int size = 0;
 	while(!isEmpty(aux)){
-		if(arc::eval(val, aux->cond)) list.push_back(aux); // conto delle condizioni vere
+		if(arc::eval(val, aux->cond)){
+			trueList[size] = aux; // conto delle condizioni vere
+			size++;
+		}
 		aux = aux->nextSibling;
 	}
 
-	int size = list.size();
 	if(size > 0){
 		Tree toReturn;
-		if(size == 1) toReturn = list[0]; // una sola condizione vera
-		else toReturn = list[util::random(0, size - 1)]; // scelta randomica
+		if(size == 1) toReturn = trueList[0]; // una sola condizione vera
+		else toReturn = trueList[util::random(0, size - 1)]; // scelta randomica
 
 		Tree result = isLast(toReturn); // constrollo se il nodo è l'ultimo (fine predizione)
 		if(result != emptyTree) return result;
@@ -198,12 +216,13 @@ Tree tree::predictList(const list::List l, const Tree& t){
 	Tree tree = t;
 	bool endPred = false;
 	while(!endPred){
-		int index = list::search(arc::format(tree->label), l);
+		int index = list::indexOf(arc::format(tree->label), l);
 		if(index < 0) return emptyTree;
 
-		list::Elem elem = list::get(index, l);
+		string elem = list::get(index, l);
+		string *couple = util::splitTwo(elem, " ");
 
-		tree = predictOne(elem.val, tree);
+		tree = predictOne(couple[1], tree);
 		if(tree != emptyTree && arc::format(tree->label) == END) endPred = true;
 		else if(tree == emptyTree) endPred = true;
 	}

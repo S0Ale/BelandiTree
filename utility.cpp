@@ -13,7 +13,10 @@ int util::random(int min, int max){
 void util::normalize(string& str){
 	for(int i = 0; i < str.size(); i++)
 		if(str[i] >= 'A' && str[i] <= 'Z') str[i] += 32;
+}
 
+//-----------------------------------------
+void util::removeBlanks(string& str){
 	for(int i = 0; i < str.size(); i++)
 		if(str[i] == ' ') str.erase(i, 1);
 }

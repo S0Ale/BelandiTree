@@ -160,12 +160,9 @@ int main(){
 							cout << "Inserisci due valori separati da uno spazio (es. \'Eta 49\'):" << "\n" << "- ";
 							cin.ignore();
 							getline(cin, line);
+							normalize(line);
 
-							string *couple = splitTwo(line, " ");
-							normalize(couple[0]);
-							normalize(couple[1]);
-
-							list::addBack(list::createElement(couple[0], couple[1]), l);
+							list::addBack(line, l);
 							break;
 						}
 						case 2:{
@@ -232,10 +229,12 @@ Tree readFromStream(istream& stream){
 	while(!stream.eof()){
 		instream >> father; // lettura nodo padre
 		normalize(father);
+		removeBlanks(father);
 
 		while(!instream.eof()){
 			instream >> child;
 			instream >> cond;
+			removeBlanks(child);
 			if(arc::format(child) != END) normalize(child); // l'etichetta END non va normalizzata
 
 			addElem(father, child, cond, t);

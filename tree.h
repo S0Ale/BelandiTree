@@ -1,5 +1,5 @@
 #include "arc.h"
-#include "list-array.h"
+#include "list.h"
 #include "utility.h"
 
 //---TDD TREE---
@@ -28,6 +28,7 @@ namespace tree{
 	bool modifyElem(const Label, const Label, const string, const Tree&);
 	bool deleteElem(const Label, Tree&);
 	bool member(const Label, const Tree&);
+	int degree(const Tree&);
 
 	Tree predictOne(const string, Tree&);
 	Tree predictList(const list::List, const Tree&);
