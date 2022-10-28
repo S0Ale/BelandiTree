@@ -83,7 +83,7 @@ void arc::printArc(const Arc& t){
 //-----------------------------------------
 // Valuta la condizione dell'arco in base agli input
 bool arc::eval(const string toEval, const Arc& t){
-	if(isEmpty(t) || containsAlphabet(t.cond)) return false;
+	if(isEmpty(t) || containsAlphabet(t.cond)) return false; // sentinel
 
 	bool result = false;
 	if(t.cond == "!=") result = toEval != t.var;
